@@ -1,0 +1,48 @@
+[
+  {
+    "data": {
+      "title": "CLI email link",
+      "linkTypeContent": {
+        "root": {
+          "type": "root",
+          "direction": null,
+          "format": "",
+          "indent": 0,
+          "children": [
+            {
+              "type": "paragraph",
+              "direction": null,
+              "format": "",
+              "indent": 0,
+              "textFormat": 0,
+              "textStyle": "",
+              "children": [
+                {
+                  "type": "link",
+                  "direction": null,
+                  "format": "",
+                  "indent": 0,
+                  "fields": {
+                    "linkType": "email",
+                    "newTab": false,
+                    "url": "mailto:dev@payloadcms.com"
+                  },
+                  "children": [
+                    {
+                      "type": "text",
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "mail"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+]

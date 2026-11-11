@@ -10,6 +10,7 @@ import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Folders } from './collections/Folders'
 import { Tags } from './collections/Tags'
+import { Posts } from './collections/Posts'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -21,7 +22,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Folders, Tags],
+  collections: [Users, Media, Folders, Tags, Posts],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -31,7 +32,10 @@ export default buildConfig({
     url: process.env.DATABASE_URL || '',
   }),
   localization: {
-    locales: [{ code: 'en', label: 'English' }],
+    locales: [
+      { code: 'en', label: 'English' },
+      { code: 'de', label: 'Deutsch' },
+    ],
     fallback: true,
     defaultLocale: 'en',
   },
