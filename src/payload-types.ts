@@ -139,67 +139,69 @@ export type SupportedTimezones =
   | 'Pacific/Fiji';
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "LexicalNodes_BB135069".
+ * via the `definition` "LexicalNodes_060F25FB".
  */
-export type LexicalNodes_BB135069 =
+export type LexicalNodes_060F25FB =
   | SerializedTextNode
   | SerializedTabNode
   | SerializedLineBreakNode
-  | SerializedParagraphNode<LexicalNodes_BB135069>
-  | SerializedAutoLinkNode<LexicalNodes_BB135069, LexicalLinkFields_0AC21CD7>
-  | SerializedLinkNode<LexicalNodes_BB135069, LexicalLinkFields_0AC21CD7>
+  | SerializedParagraphNode<LexicalNodes_060F25FB>
+  | SerializedAutoLinkNode<LexicalNodes_060F25FB, LexicalLinkFields_0AC21CD7>
+  | SerializedLinkNode<LexicalNodes_060F25FB, LexicalLinkFields_0AC21CD7>
   | SerializedHorizontalRuleNode
   | SerializedUploadNode<'media'>
-  | SerializedQuoteNode<LexicalNodes_BB135069>
+  | SerializedQuoteNode<LexicalNodes_060F25FB>
   | SerializedRelationshipNode<
       | 'users'
       | 'folders'
       | 'tags'
       | 'posts'
       | 'payload-kv'
+      | 'payload-jobs'
       | 'payload-locked-documents'
       | 'payload-preferences'
       | 'payload-migrations'
     >
-  | SerializedListNode<LexicalNodes_BB135069>
-  | SerializedListItemNode<LexicalNodes_BB135069>
-  | SerializedHeadingNode<LexicalNodes_BB135069>;
+  | SerializedListNode<LexicalNodes_060F25FB>
+  | SerializedListItemNode<LexicalNodes_060F25FB>
+  | SerializedHeadingNode<LexicalNodes_060F25FB>;
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "LexicalNodes_5B84B32D".
+ * via the `definition` "LexicalNodes_1C9BECFE".
  */
-export type LexicalNodes_5B84B32D =
+export type LexicalNodes_1C9BECFE =
   | SerializedTextNode
   | SerializedTabNode
   | SerializedLineBreakNode
-  | SerializedParagraphNode<LexicalNodes_5B84B32D>
-  | SerializedAutoLinkNode<LexicalNodes_5B84B32D, LexicalLinkFields>
-  | SerializedLinkNode<LexicalNodes_5B84B32D, LexicalLinkFields>
+  | SerializedParagraphNode<LexicalNodes_1C9BECFE>
+  | SerializedAutoLinkNode<LexicalNodes_1C9BECFE, LexicalLinkFields>
+  | SerializedLinkNode<LexicalNodes_1C9BECFE, LexicalLinkFields>
   | SerializedHorizontalRuleNode
   | SerializedUploadNode<'media'>
-  | SerializedQuoteNode<LexicalNodes_5B84B32D>
+  | SerializedQuoteNode<LexicalNodes_1C9BECFE>
   | SerializedRelationshipNode<
       | 'users'
       | 'folders'
       | 'tags'
       | 'posts'
       | 'payload-kv'
+      | 'payload-jobs'
       | 'payload-locked-documents'
       | 'payload-preferences'
       | 'payload-migrations'
     >
-  | SerializedListNode<LexicalNodes_5B84B32D>
-  | SerializedListItemNode<LexicalNodes_5B84B32D>
-  | SerializedHeadingNode<LexicalNodes_5B84B32D>;
+  | SerializedListNode<LexicalNodes_1C9BECFE>
+  | SerializedListItemNode<LexicalNodes_1C9BECFE>
+  | SerializedHeadingNode<LexicalNodes_1C9BECFE>;
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "LexicalNodes_6CC01FE5".
+ * via the `definition` "LexicalNodes_1DD50C19".
  */
-export type LexicalNodes_6CC01FE5 =
+export type LexicalNodes_1DD50C19 =
   | SerializedTextNode
   | SerializedTabNode
   | SerializedLineBreakNode
-  | SerializedParagraphNode<LexicalNodes_6CC01FE5>
+  | SerializedParagraphNode<LexicalNodes_1DD50C19>
   | {
       type: 'upload';
       /**
@@ -210,22 +212,23 @@ export type LexicalNodes_6CC01FE5 =
       [k: string]: unknown;
     }
   | SerializedHorizontalRuleNode
-  | SerializedQuoteNode<LexicalNodes_6CC01FE5>
+  | SerializedQuoteNode<LexicalNodes_1DD50C19>
   | SerializedRelationshipNode<
       | 'users'
       | 'folders'
       | 'tags'
       | 'posts'
       | 'payload-kv'
+      | 'payload-jobs'
       | 'payload-locked-documents'
       | 'payload-preferences'
       | 'payload-migrations'
     >
-  | SerializedAutoLinkNode<LexicalNodes_6CC01FE5, LexicalLinkFields>
-  | SerializedLinkNode<LexicalNodes_6CC01FE5, LexicalLinkFields>
-  | SerializedListNode<LexicalNodes_6CC01FE5>
-  | SerializedListItemNode<LexicalNodes_6CC01FE5>
-  | SerializedHeadingNode<LexicalNodes_6CC01FE5>;
+  | SerializedAutoLinkNode<LexicalNodes_1DD50C19, LexicalLinkFields>
+  | SerializedLinkNode<LexicalNodes_1DD50C19, LexicalLinkFields>
+  | SerializedListNode<LexicalNodes_1DD50C19>
+  | SerializedListItemNode<LexicalNodes_1DD50C19>
+  | SerializedHeadingNode<LexicalNodes_1DD50C19>;
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "LexicalNodes_3DE324E4".
@@ -251,6 +254,7 @@ export interface Config {
     tags: Tag;
     posts: Post;
     'payload-kv': PayloadKv;
+    'payload-jobs': PayloadJob;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -264,6 +268,7 @@ export interface Config {
     tags: TagsSelect<false> | TagsSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
+    'payload-jobs': PayloadJobsSelect<false> | PayloadJobsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -273,8 +278,12 @@ export interface Config {
     defaultIDType: string;
   };
   fallbackLocale: ('false' | 'none' | 'null') | false | null | ('en' | 'de') | ('en' | 'de')[];
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'payload-jobs-stats': PayloadJobsStat;
+  };
+  globalsSelect: {
+    'payload-jobs-stats': PayloadJobsStatsSelect<false> | PayloadJobsStatsSelect<true>;
+  };
   locale: 'en' | 'de';
   widgets: {
     welcome: WelcomeWidget;
@@ -285,7 +294,13 @@ export interface Config {
   };
   user: User;
   jobs: {
-    tasks: unknown;
+    tasks: {
+      schedulePublish: TaskSchedulePublish;
+      inline: {
+        input: unknown;
+        output: unknown;
+      };
+    };
     workflows: unknown;
   };
 }
@@ -338,6 +353,17 @@ export interface User {
         expiresAt: string;
         refreshCount?: number | null;
         refreshedAt?: string | null;
+        label?: string | null;
+        type?: string | null;
+        metadata?:
+          | {
+              [k: string]: unknown;
+            }
+          | unknown[]
+          | string
+          | number
+          | boolean
+          | null;
       }[]
     | null;
   password?: string | null;
@@ -440,9 +466,9 @@ export interface Post {
         id?: string | null;
       }[]
     | null;
-  linkTypeContent?: LexicalRichText<LexicalNodes_BB135069> | null;
-  linkTypeOnlyContent?: LexicalRichText<LexicalNodes_5B84B32D> | null;
-  noUploadCollectionsContent?: LexicalRichText<LexicalNodes_6CC01FE5> | null;
+  linkTypeContent?: LexicalRichText<LexicalNodes_060F25FB> | null;
+  linkTypeOnlyContent?: LexicalRichText<LexicalNodes_1C9BECFE> | null;
+  noUploadCollectionsContent?: LexicalRichText<LexicalNodes_1DD50C19> | null;
   createdBy?: {
     relationTo: 'users';
     value: string | User;
@@ -471,6 +497,116 @@ export interface PayloadKv {
     | number
     | boolean
     | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-jobs".
+ */
+export interface PayloadJob {
+  id: string;
+  /**
+   * Input data provided to the job
+   */
+  input?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  taskStatus?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  meta?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  completedAt?: string | null;
+  totalTried?: number | null;
+  /**
+   * If hasError is true this job will not be retried
+   */
+  hasError?: boolean | null;
+  /**
+   * If hasError is true, this is the error that caused it
+   */
+  error?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  /**
+   * Task execution log
+   */
+  log?:
+    | {
+        executedAt: string;
+        completedAt: string;
+        taskSlug: 'inline' | 'schedulePublish';
+        taskID: string;
+        input:
+          | {
+              [k: string]: unknown;
+            }
+          | unknown[]
+          | string
+          | number
+          | boolean
+          | null;
+        output?:
+          | {
+              [k: string]: unknown;
+            }
+          | unknown[]
+          | string
+          | number
+          | boolean
+          | null;
+        state: 'failed' | 'succeeded';
+        error?:
+          | {
+              [k: string]: unknown;
+            }
+          | unknown[]
+          | string
+          | number
+          | boolean
+          | null;
+        parent?: {
+          taskSlug?: ('inline' | 'schedulePublish') | null;
+          taskID?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  taskSlug?: ('inline' | 'schedulePublish') | null;
+  queue?: string | null;
+  waitUntil?: string | null;
+  processingUntil?: string | null;
+  processingToken?: string | null;
+  /**
+   * Used for concurrency control. Jobs with the same key are subject to exclusive/supersedes rules.
+   */
+  concurrencyKey?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -588,6 +724,9 @@ export interface UsersSelect<T extends boolean = true> {
         expiresAt?: T;
         refreshCount?: T;
         refreshedAt?: T;
+        label?: T;
+        type?: T;
+        metadata?: T;
       };
 }
 /**
@@ -686,6 +825,46 @@ export interface PayloadKvSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-jobs_select".
+ */
+export interface PayloadJobsSelect<T extends boolean = true> {
+  input?: T;
+  taskStatus?: T;
+  meta?: T;
+  completedAt?: T;
+  totalTried?: T;
+  hasError?: T;
+  error?: T;
+  log?:
+    | T
+    | {
+        executedAt?: T;
+        completedAt?: T;
+        taskSlug?: T;
+        taskID?: T;
+        input?: T;
+        output?: T;
+        state?: T;
+        error?: T;
+        parent?:
+          | T
+          | {
+              taskSlug?: T;
+              taskID?: T;
+            };
+        id?: T;
+      };
+  taskSlug?: T;
+  queue?: T;
+  waitUntil?: T;
+  processingUntil?: T;
+  processingToken?: T;
+  concurrencyKey?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -731,6 +910,34 @@ export interface PayloadLlmInstructionsSelect<T extends boolean = true> {
   updatedBy?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-jobs-stats".
+ */
+export interface PayloadJobsStat {
+  id: string;
+  stats?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-jobs-stats_select".
+ */
+export interface PayloadJobsStatsSelect<T extends boolean = true> {
+  stats?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -794,6 +1001,26 @@ export interface UploadDropzoneWidget {
     excludedCollections?: 'media'[] | null;
   };
   width: 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'full';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TaskSchedulePublish".
+ */
+export interface TaskSchedulePublish {
+  input: {
+    type?: ('publish' | 'unpublish') | null;
+    locale?: string | null;
+    doc?: {
+      relationTo: 'posts';
+      value: string | Post;
+    } | null;
+    global?: string | null;
+    user?: {
+      relationTo: 'users';
+      value: string | User;
+    } | null;
+  };
+  output?: unknown;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

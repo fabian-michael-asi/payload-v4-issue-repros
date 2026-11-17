@@ -1,6 +1,6 @@
 # Payload 4 beta reproductions
 
-A blank `create-payload-app@4.0.0-beta.8` project (MongoDB) that reproduces four bugs with one `posts` collection. The reproduction code is in `src/collections/Posts.ts`, `src/components/ItemRowLabel.tsx` and `src/repro/`. `src/payload.config.ts` only adds the collection and a second locale.
+A blank `create-payload-app@4.0.0-beta.8` project (MongoDB), updated to 4.0.0-beta.9, that reproduces five bugs with one `posts` collection. The reproduction code is in `src/collections/Posts.ts`, `src/components/ItemRowLabel.tsx` and `src/repro/`. `src/payload.config.ts` only adds the collection and a second locale.
 
 ## Setup
 
@@ -29,7 +29,7 @@ The first fails with `Invalid option: expected one of "custom"|"internal"`. The 
 `noUploadCollectionsContent` uses `UploadFeature({ disabledCollections: ['media'] })`. `pnpm exec tsc --noEmit` fails in `src/repro/types.ts`:
 
 ```
-Type 'LexicalNodes_6CC01FE5' is not assignable to type 'SerializedLexicalNode'.
+Type 'LexicalNodes_1DD50C19' is not assignable to type 'SerializedLexicalNode'.
   Type '{ [k: string]: unknown; type: "upload"; version?: number | undefined; }' is not assignable to type 'SerializedLexicalNode'.
     Types of property 'version' are incompatible.
 ```
@@ -59,3 +59,18 @@ Log in as `dev@payloadcms.com` / `test`, open the post in English, then Versions
 `items` uses `src/components/ItemRowLabel.tsx`, a label with `width: 100%` and `justify-content: space-between`. Open the post from step 3: "First item" and "right-aligned" sit next to each other, because `.array-field__row-header` (126 px here) does not grow inside `.collapsible__header-wrap` (983 px).
 
 ![Array row label](docs/array-row-label.png)
+
+## 5. A scheduled unpublish only unpublishes the default locale
+
+`posts` has `schedulePublish`. The schedule drawer shows its locale picker only for publishing, so it queues an unpublish without a locale, which the `schedulePublish` task reads as "all locales". The commands below queue the same job and run it.
+
+```sh
+ID=$(pnpm -s payload createDocuments --slug posts --draft --locale en --documents '[{"data":{"title":"Hello"}}]' --json | jq -r '.result.docs[0].id')
+pnpm payload updateDocument --slug posts --id "$ID" --locale de --draft --data '{"title":"Hallo"}'
+pnpm payload updateDocument --slug posts --id "$ID" --locale en --publish-all-locales --data '{"_status":"published"}'
+pnpm payload createDocuments --slug payload-jobs --documents "[{\"data\":{\"taskSlug\":\"schedulePublish\",\"input\":{\"type\":\"unpublish\",\"doc\":{\"relationTo\":\"posts\",\"value\":\"$ID\"}}}}]"
+pnpm payload jobs:run
+pnpm -s payload findDocuments --slug posts --id "$ID" --locale all --select '{"_status":true}' --json | jq -c '.result._status'
+```
+
+The last command prints `{"en":"draft","de":"published"}`. Expected: `{"en":"draft","de":"draft"}`.

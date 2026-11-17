@@ -20,7 +20,7 @@ const addEmailLinkTypeOnly = LinkFeature({
 export const Posts: CollectionConfig = {
   slug: 'posts',
   admin: { useAsTitle: 'title' },
-  versions: { drafts: true },
+  versions: { drafts: { schedulePublish: true } },
   fields: [
     { name: 'title', type: 'text', localized: true },
     {
